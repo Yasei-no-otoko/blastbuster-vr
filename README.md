@@ -10,7 +10,7 @@ Leap Motion's easy method to get 2D-position is interactionBox.NormalizePoint()
 However, it coordinate is different from a pass-through image.
 Therefore I acquire the coordinate of the fingertip edge using the next method.
 
-```c#
+```cs
   GameObject[] fingerTips = new GameObject[10];
   Frame frame = controller.Frame();
   Vector3 pos = frame.Hands[x].Fingers[y].Bone(Bone.BoneType.TYPE_DISTAL).NextJoint.ToUnity(HandController.mirrorZAxis);
@@ -18,7 +18,7 @@ Therefore I acquire the coordinate of the fingertip edge using the next method.
   fingerTips[i].transform.LookAt(camera.transform.position);
 ```
 And I confirm whether a finger-tip covered up a target with a viewport coordinate.
-```c#
+```cs
   Vector3 shootPos = camera.WorldToViewportPoint(fingerTips[i].transform.position);
   Ray ray = camera.ViewportPointToRay(shootPos);
 ```
